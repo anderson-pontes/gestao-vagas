@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.andersonpontes.gestao_vagas.modules.candidate.CandidateEntity;
 import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/candidate")
 public class CandidateController {

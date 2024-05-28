@@ -1,6 +1,5 @@
 package br.com.andersonpontes.gestao_vagas.exceptions;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +14,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ExceptionHandlerController {
-
+  
   private MessageSource messageSource;
 
-  public ExceptionHandlerController(MessageSource message){
+  public ExceptionHandlerController(MessageSource message) {
     this.messageSource = message;
   }
 
@@ -28,13 +27,12 @@ public class ExceptionHandlerController {
 
     e.getBindingResult().getFieldErrors().forEach(err -> {
       String message = messageSource.getMessage(err, LocaleContextHolder.getLocale());
-      
       ErrorMessageDTO error = new ErrorMessageDTO(message, err.getField());
+
       dto.add(error);
     });
 
     return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
 
   }
-  
 }
